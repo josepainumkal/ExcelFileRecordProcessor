@@ -7,6 +7,14 @@ Multi-threaded java solution to process records in an excel file using producer-
 3. Writing to an excel file (using apache poi)
 
 ## To run the project:
+
+## Jars Required:
 ```bash
-Run the file RecordProducer.java (it has the main method)
-`
+        'org.apache.poi:poi:4.1.2',
+        'org.apache.poi:poi-ooxml:4.1.2',
+        'org.apache.poi:poi-ooxml-schemas:4.1.2',
+        'org.apache.xmlbeans:xmlbeans:3.1.0',      
+        'org.apache.commons:commons-collections4:4.4',
+        'org.apache.commons:commons-compress:1.20',
+        'commons-io:commons-io:2.5'
+```
