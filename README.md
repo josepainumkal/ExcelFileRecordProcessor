@@ -38,7 +38,7 @@ InputStream in = new ByteArrayInputStream(fileContent);
 ps.setBinaryStream(1,in);
 ps.executeQuery();
 ```
-To read excel file saved in blob field in Oracle DB: 1) First read the blob field and save the blob content as an excel file in the computer. 2) Then read the saved excel file using poi 
+To read excel file saved in blob field in Oracle DB: 1) First read the blob field and save the blob content as an excel file in the computer. 2) Then read the saved excel file using poi. Below code snipped shows how blob field can be saved as an excel file in the computer
 
 ```bash
 String query = "SELECT * FROM TableName";
