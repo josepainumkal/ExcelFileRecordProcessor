@@ -24,3 +24,42 @@ Run the file RecordProducer.java (contains the main())
         'org.apache.commons:commons-compress:1.20',
         'commons-io:commons-io:2.5'
 ```
+
+## Useful tips:
+To upload/save an excel file to BLOB field of a table in Oracle DB:
+
+```bash
+String importFile = "C:/folder/filename.xlsx";
+Connection conn = getOracleConnection();
+String insertQuery = "INSERT INTO <Tablename>(column Name) VALUES(?)";
+PreparedStatement ps = conn.prepareStatement(insertQuery);
+byte[] fileContent = FileUtils.readFileToByteArray(new File(importFile));
+InputStream in = new ByteArrayInputStream(fileContent);
+ps.setBinaryStream(1,in);
+ps.executeQuery();
+```
+To read excel file saved in blob field in Oracle DB:
+```bash
+String query = "SELECT * FROM TableName";
+PreparedStatement ps = conn.prepareStatement(query);
+ResultSet rs = ps.executeQuery();
+while(rs.next()){
+   Workbook wb = new XSSFWorkbook(rs.getBinaryStream(1)); // the no of the blob field in the select query used
+   String importFile = "<folderpath>/filename.xlsx";
+   FileOutputStream os = FileUtils.openOutputStream(new File(importFile));
+   wb.write(os);
+   wb.close();
+   os.close();
+}
+```
+
+
+
+
+
+
+
+
+
+
+
